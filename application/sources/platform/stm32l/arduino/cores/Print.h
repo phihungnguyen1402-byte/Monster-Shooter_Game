@@ -34,6 +34,7 @@
 #define BIN 2
 
 
+#ifdef __cplusplus
 class Print
 {
 private:
@@ -78,5 +79,6 @@ public:
     size_t println(const Printable&);
     size_t println(void);
 };
+#endif //__cplusplus
 
-#endif
+#endif //Print_h

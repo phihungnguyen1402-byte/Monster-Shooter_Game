@@ -1,33 +1,21 @@
-#include "fsm.h"
-#include "port.h"
-#include "message.h"
-
-#include "sys_ctrl.h"
-#include "sys_dbg.h"
-
-#include "app.h"
-#include "app_dbg.h"
-
+#include "ak.h"
 #include "task_list.h"
 #include "task_life.h"
+#include "screen_manager.h"
+#include "screens.h"
 
 led_t led_life;
 
 void task_life(ak_msg_t* msg) {
-	switch (msg->sig) {
-	case AC_LIFE_SYSTEM_CHECK:
-		/* reset watchdog */
-		sys_ctrl_independent_watchdog_reset();
-		sys_ctrl_soft_watchdog_reset();
+    switch (msg->sig) {
+        case AC_LIFE_SYSTEM_CHECK: {
+            APP_DBG_SIG("AC_LIFE_SYSTEM_CHECK\n");
+            led_toggle(&led_life);
+            sys_ctrl_soft_watchdog_increase_counter();
+            sys_ctrl_independent_watchdog_reset();
+        } break;
 
-#if defined(AK_IO_IRQ_ANALYZER)
-#else
-		/* toggle led indicator */
-		led_toggle(&led_life);
-#endif
-		break;
-
-	default:
-		break;
-	}
-}
+        default:
+            break;
+    }
+}   

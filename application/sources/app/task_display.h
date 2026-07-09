@@ -3,7 +3,7 @@
 
 #include "screen_manager.h"
 #include "screens.h"
-
+#include "scr_peashooter.h"
 #define LCD_WIDTH			(124)
 #define LCD_HEIGHT			(60)
 

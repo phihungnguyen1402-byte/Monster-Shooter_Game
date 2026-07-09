@@ -58,7 +58,7 @@ bool Adafruit_oled_drv::initialize() {
 
 	delay(10);	  // wait for the screen loaded.
 
-#elif defined(SSD1306_DRIVER_EN)
+#elif defined(SSD1306_DRIVER_EN) || defined(SSD1309_DRIVER_EN)
 	writeCommand(SSD1306_DISPLAY_OFF);		 // display off
 	writeCommand(SSD1306_MEMORY_MODE);		 // Set Memory Addressing Mode
 	writeCommand(0x10);						 // 00,Horizontal Addressing Mode;01,Vertical Addressing Mode;10,Page Addressing Mode (RESET);11,Invalid
@@ -118,7 +118,7 @@ bool Adafruit_oled_drv::initialize() {
 #else
 #error "Don't know oled driver type."
 #endif
-
+// 
 	return true;
 }
 

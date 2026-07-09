@@ -133,6 +133,7 @@ enum SSD1309_CMD_SET {
 #define FBSIZE 1024 //128x8
 #define MAXROW 8
 
+#ifdef __cplusplus
 class Adafruit_oled_drv : public Adafruit_GFX{
 public:
 	Adafruit_oled_drv();
@@ -177,5 +178,6 @@ protected:
 	int m_res;
 	unsigned char* m_pFramebuffer;
 };
+#endif //__cplusplus
 
 #endif //__ADAFRUIT_OLED_DRV_H

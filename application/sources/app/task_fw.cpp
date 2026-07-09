@@ -42,6 +42,7 @@ static uint8_t flash_read_buffer[FLASH_PAGE_SIZE];
 void task_fw(ak_msg_t* msg) {
 	switch (msg->sig) {
 	case FW_CHECKING_REQ: {
+		#if 0
 		APP_DBG_SIG("FW_CHECKING_REQ\n");
 		firmware_header_t cr_fw_header;
 
@@ -97,6 +98,7 @@ void task_fw(ak_msg_t* msg) {
 		if (memcmp(&cr_sb, &sb, sizeof(sys_boot_t)) != 0) {
 			sys_boot_set(&sb);
 		}
+		#endif
 	}
 		break;
 

@@ -1,8 +1,10 @@
 #ifndef __VIEW_RENDER_H__
 #define __VIEW_RENDER_H__
-
 #include "view_item.h"
+
+#ifdef __cplusplus
 #include "Adafruit_oled_drv.h"
+#endif
 
 #define	X_SIZE_FONT						(5)
 #define	Y_SIZE_FONT						(7)
@@ -23,7 +25,9 @@
 
 typedef int (*view_render_item)(void*);
 
+#ifdef __cplusplus
 extern Adafruit_oled_drv view_render;
+#endif
 
 extern void view_render_init();
 extern int view_render_screen(view_screen_t* screen);

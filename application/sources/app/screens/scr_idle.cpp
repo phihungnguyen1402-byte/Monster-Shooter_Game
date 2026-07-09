@@ -100,9 +100,11 @@ static void scr_idle_return_screen() {
 }
 
 void view_scr_idle() {
-	for (ball _ball : v_idle_ball) {
-		view_render.drawCircle(_ball.x, _ball.y, _ball.radius, 144);
-	}
+    view_render.clear();           // Xóa sạch màn hình 
+    view_render.setTextSize(2);    // Chữ to
+    view_render.setTextColor(WHITE);
+    view_render.setCursor(30, 25); // Canh giữa màn hình
+    view_render.print("HELLO HUNG"); // Hiển thị vĩnh viễn
 }
 
 void scr_idle_handle(ak_msg_t *msg) {
@@ -129,30 +131,12 @@ void scr_idle_handle(ak_msg_t *msg) {
 		}
 	} break;
 
+
 	case AC_DISPLAY_BUTON_MODE_PRESSED: {
-		APP_DBG_SIG("AC_DISPLAY_BUTON_MODE_PRESSED\n");
-		scr_idle_return_screen();
-	} break;
-
-	case AC_DISPLAY_BUTON_UP_PRESSED: {
-		APP_DBG_SIG("AC_DISPLAY_BUTON_UP_PRESSED\n");
-		ball new_ball;
-		new_ball.id = ball::total++;
-
-		if (v_idle_ball.empty()) {
-			timer_set(AC_TASK_DISPLAY_ID, \
-					  AC_DISPLAY_SHOW_IDLE_BALL_MOVING_UPDATE, \
-					  AC_DISPLAY_SHOW_IDLE_BALL_MOVING_UPDATE_INTERAL, \
-					  TIMER_PERIODIC);
-		}
-
-		if (v_idle_ball.size() < MAX_BALL_DISPLAY) {
-			v_idle_ball.push_back(new_ball);
-		}
-		else {
-			BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
-		}
-	} break;
+    APP_DBG_SIG("AC_DISPLAY_BUTON_MODE_PRESSED\n");
+    timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE_BALL_MOVING_UPDATE);
+    SCREEN_TRAN(scr_peashooter_handle, &scr_peashooter);   // <-- THAY vì scr_idle_return_screen()
+} break;
 
 	case AC_DISPLAY_BUTON_DOWN_PRESSED: {
 		APP_DBG_SIG("AC_DISPLAY_BUTON_DOWN_PRESSED\n");

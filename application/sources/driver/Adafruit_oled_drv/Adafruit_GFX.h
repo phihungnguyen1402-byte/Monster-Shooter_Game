@@ -7,8 +7,8 @@
 #define abs(x) ((x)>0?(x):-(x))
 //#define swap(a, b) { int16_t t = a; a = b; b = t; } //GaoKong 26/09/2019, using #include <algorithm>
 
+#ifdef __cplusplus
 class Adafruit_GFX : public Print {
-
  public:
   Adafruit_GFX(int16_t w, int16_t h); // Constructor
 
@@ -73,7 +73,8 @@ class Adafruit_GFX : public Print {
   uint8_t
     textsize,
     rotation;
-  bool wrap; // If set, 'wrap' text at right edge of display
+  bool wrap;
 };
+#endif //__cplusplus
 
 #endif // __ADAFRUIT_GFX_H__
