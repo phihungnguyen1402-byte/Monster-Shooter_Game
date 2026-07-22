@@ -454,11 +454,12 @@ void sys_ctrl_soft_watchdog_init(uint32_t time_out) {
 }
 
 void sys_ctrl_soft_watchdog_reset() {
-	ENTRY_CRITICAL();
-	sys_ctrl_soft_counter = 0;
-	EXIT_CRITICAL();
-}
+    ENTRY_CRITICAL();
+    sys_ctrl_soft_counter = 0;
+    EXIT_CRITICAL();
 
+    
+}
 void sys_ctrl_soft_watchdog_enable() {
 	ENTRY_CRITICAL();
 	TIM_Cmd(TIM7, ENABLE);

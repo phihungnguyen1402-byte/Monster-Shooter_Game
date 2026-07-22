@@ -180,12 +180,16 @@ static void BUZZER_PlayTones(const Tone_TypeDef * tones) {
 	}
 }
 
-void BUZZER_PlaySound(buzzer_sound_t sound) {
-return;	
-const Tone_TypeDef* tones = buzzer_get_music(sound);
-	if (tones != NULL) {
-		BUZZER_PlayTones(tones);
-	}
+void BUZZER_PlaySound(buzzer_sound_t sound)
+{
+   
+
+    const Tone_TypeDef* tones = buzzer_get_music(sound);
+
+    if (tones != NULL)
+    {
+        BUZZER_PlayTones(tones);
+    }
 }
 
 void BUZZER_Silent(bool isSilent) {

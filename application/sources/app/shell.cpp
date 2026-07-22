@@ -4,7 +4,7 @@
  * @date:   13/08/2016
  ******************************************************************************
 **/
-
+#include "game/sound_manager.h"
 #include <stdint.h>
 #include <stdlib.h>
 #include <malloc.h>
@@ -909,22 +909,22 @@ int32_t shell_buzzer(uint8_t* argv) {
 		break;
 
 	case '1': {
-		BUZZER_PlaySound(BUZZER_SOUND_STARTUP);
+		sound_play(BUZZER_SOUND_STARTUP);
 	}
 		break;
 
 	case '2': {
-		BUZZER_PlaySound(BUZZER_SOUND_3BEEP);
+		sound_play(BUZZER_SOUND_3BEEP);
 	}
 		break;
 
 	case '3': {
-		BUZZER_PlaySound(BUZZER_SOUND_SUPER_MARIO);
+		sound_play(BUZZER_SOUND_SUPER_MARIO);
 	}
 		break;
 
 	case '4': {
-		BUZZER_PlaySound(BUZZER_SOUND_MERRY_CHRISTMAS);
+		sound_play(BUZZER_SOUND_MERRY_CHRISTMAS);
 	}
 		break;
 

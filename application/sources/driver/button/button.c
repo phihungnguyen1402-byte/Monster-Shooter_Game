@@ -1,12 +1,15 @@
 #include "button.h"
+#include <stddef.h>
 
+#define BUTTON_REPEAT_TIME 50
+#define BUTTON_REPEAT_TIME    50
 uint8_t button_init(button_t* button, uint32_t u, uint8_t id, pf_button_ctrl init, pf_button_read read, pf_button_callback callback) {
 	button->enable		=	BUTTON_DISABLE;
 	button->id			=	id;
 	button->counter		=	0;
 	button->unit		=	u;
 	button->state		=	BUTTON_SW_STATE_RELEASED;
-
+	button->counter_enable = BUTTON_ENABLE;
 	button->init		=	init;
 	button->read		=	read;
 	button->callback	=	callback;
@@ -38,6 +41,10 @@ void button_disable(button_t* button) {
 }
 
 void button_timer_polling(button_t* button) {
+	if(button == NULL)
+	{
+		return;
+	}
 	uint8_t hw_button_state;
 	if (button->enable == BUTTON_ENABLE) {
 		hw_button_state = button->read();
@@ -49,42 +56,28 @@ void button_timer_polling(button_t* button) {
 				/* increase button counter */
 				button->counter += button->unit;
 
-				/* check long press */
-				if (button->counter == BUTTON_LONG_PRESS_TIME &&
-						button->state != BUTTON_SW_STATE_LONG_PRESSED) {
+		/* nhấn lần đầu */
+		if (button->counter >= BUTTON_SHORT_PRESS_MIN_TIME &&
+			button->state != BUTTON_SW_STATE_PRESSED)
+		{
+			button->enable = BUTTON_DISABLE;
 
-					button->enable			= BUTTON_DISABLE;
-					button->state			= BUTTON_SW_STATE_LONG_PRESSED;
-					button->callback(button);
-					button->state			= BUTTON_SW_STATE_PRESSED;
-					button->enable			= BUTTON_ENABLE;
-				}
-				/* check short press */
-				else if (button->counter >= BUTTON_SHORT_PRESS_MIN_TIME &&
-						 button->state != BUTTON_SW_STATE_PRESSED) {
+			button->state = BUTTON_SW_STATE_PRESSED;
 
-					button->enable			= BUTTON_DISABLE;
-					button->state			= BUTTON_SW_STATE_PRESSED;
-					button->callback(button);
-					button->enable			= BUTTON_ENABLE;
-				}
+			button->callback(button);
+
+			button->enable = BUTTON_ENABLE;
+		}
 			}
 		}
 		/* hard button released */
 		else {
 
-			button->state			= BUTTON_SW_STATE_RELEASED;
-
-			/* check released */
-			if (button->counter > BUTTON_SHORT_PRESS_MIN_TIME){
-				button->enable			= BUTTON_DISABLE;
-				button->callback(button);
-			}
-
 			/* reset button */
-			button->counter			= 0;
-			button->counter_enable	= BUTTON_ENABLE;
-			button->enable			= BUTTON_ENABLE;
+			button->state = BUTTON_SW_STATE_RELEASED;
+			button->counter = 0;
+			button->counter_enable = BUTTON_ENABLE;
+			button->enable = BUTTON_ENABLE;
 		}
 	}
 }

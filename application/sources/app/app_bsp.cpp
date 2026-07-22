@@ -14,61 +14,97 @@
 button_t btn_mode;
 button_t btn_up;
 button_t btn_down;
+static bool mode_lock = false;
+void btn_mode_callback(void* b)
+{
+    button_t* me_b = (button_t*)b;
 
-void btn_mode_callback(void* b) {
-	button_t* me_b = (button_t*)b;
-	switch (me_b->state) {
-	case BUTTON_SW_STATE_PRESSED: {
-		APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_PRESSED\n");
-		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_MODE_PRESSED);
-		timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE, AC_DISPLAY_IDLE_INTERVAL, TIMER_ONE_SHOT);
-	}
-		break;
+    APP_DBG(
+        "[MODE CALLBACK] state=%d counter=%d\n",
+        me_b->state,
+        me_b->counter
+    );
 
-	case BUTTON_SW_STATE_LONG_PRESSED: {
-		APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_LONG_PRESSED\n");
-	}
-		break;
+    switch(me_b->state)
+    {
+    case BUTTON_SW_STATE_PRESSED:
+    {
+        APP_DBG("[btn_mode_callback] BUTTON_SW_STATE_PRESSED\n");
 
-	default:
-		break;
-	}
+        task_post_pure_msg(
+            AC_TASK_DISPLAY_ID,
+            AC_DISPLAY_BUTON_MODE_PRESSED
+        );
+
+    }
+    break;
+
+
+    case BUTTON_SW_STATE_LONG_PRESSED:
+    {
+        APP_DBG("[btn_mode_callback] LONG PRESSED\n");
+    }
+    break;
+
+
+    default:
+        break;
+    }
 }
 
-void btn_up_callback(void* b) {
-	button_t* me_b = (button_t*)b;
-	switch (me_b->state) {
-	case BUTTON_SW_STATE_PRESSED: {
-		APP_DBG("[btn_up_callback] BUTTON_SW_STATE_PRESSED\n");
-		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_UP_PRESSED);
-		timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE, AC_DISPLAY_IDLE_INTERVAL, TIMER_ONE_SHOT);
-	}
-		break;
+void btn_up_callback(void* b)
+{
+    button_t* me_b = (button_t*)b;
 
-	case BUTTON_SW_STATE_LONG_PRESSED: {
-		APP_DBG("[btn_up_callback] BUTTON_SW_STATE_LONG_PRESSED\n");
-	}
-		break;
+    switch(me_b->state)
+    {
+        case BUTTON_SW_STATE_PRESSED:
+        {
+            APP_DBG("[btn_up_callback] BUTTON_SW_STATE_PRESSED\n");
 
-	default:
-		break;
-	}
+            task_post_pure_msg(
+                AC_TASK_DISPLAY_ID,
+                AC_DISPLAY_BUTON_UP_PRESSED
+            );
+        }
+        break;
+
+
+        case BUTTON_SW_STATE_LONG_PRESSED:
+        {
+            APP_DBG("[btn_up_callback] BUTTON_SW_STATE_LONG_PRESSED\n");
+
+            task_post_pure_msg(
+                AC_TASK_DISPLAY_ID,
+                AC_DISPLAY_BUTON_UP_PRESSED
+            );
+        }
+        break;
+
+
+        default:
+        break;
+    }
 }
-
 void btn_down_callback(void* b) {
 	button_t* me_b = (button_t*)b;
 	switch (me_b->state) {
 	case BUTTON_SW_STATE_PRESSED: {
 		APP_DBG("[btn_down_callback] BUTTON_SW_STATE_PRESSED\n");
 		task_post_pure_msg(AC_TASK_DISPLAY_ID, AC_DISPLAY_BUTON_DOWN_PRESSED);
-		timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE, AC_DISPLAY_IDLE_INTERVAL, TIMER_ONE_SHOT);
+		
 	}
 		break;
 
 	case BUTTON_SW_STATE_LONG_PRESSED: {
 		APP_DBG("[btn_down_callback] BUTTON_SW_STATE_LONG_PRESSED\n");
+
+		task_post_pure_msg(
+			AC_TASK_DISPLAY_ID,
+			AC_DISPLAY_BUTON_DOWN_PRESSED
+		);
 	}
-		break;
+	break;
 
 	default:
 		break;

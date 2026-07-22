@@ -29,7 +29,7 @@ extern view_screen_t scr_idle;
 extern void scr_idle_handle(ak_msg_t* msg);
 
 extern view_dynamic_t dyn_view_peashooter;
-
+extern void scr_idle_handle(ak_msg_t *msg);
 // scr_qrcode
 extern view_dynamic_t dyn_view_qrcode;
 extern view_screen_t scr_qrcode;
@@ -50,4 +50,7 @@ extern view_dynamic_t dyn_view_peashooter;
 extern view_screen_t scr_peashooter;
 extern void scr_peashooter_handle(ak_msg_t* msg);
 
+extern view_dynamic_t dyn_view_peashooter_menu;
+extern view_screen_t scr_peashooter_menu;
+extern void scr_peashooter_menu_handle(ak_msg_t *msg);
 #endif //__SCREENS_H__

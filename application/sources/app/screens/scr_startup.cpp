@@ -18,35 +18,33 @@ static void view_scr_startup() {
     view_render.clear();
     view_render.setTextSize(1);
     view_render.setTextColor(WHITE);
-    view_render.setCursor(30, 25);
-    view_render.print("HELLO WORLD");
+    view_render.setCursor(38, 25);
+    view_render.print("Welcome to ");
+    view_render.setTextSize(1);
+    view_render.setTextColor(WHITE);
+    view_render.setCursor(16, 35);
+    view_render.print(" Monster Shooter ");
 }
 
 void scr_startup_handle(ak_msg_t* msg) {
     switch (msg->sig) {
         case SCREEN_ENTRY: {
-    APP_DBG_SIG("SCR_STARTUP SCREEN_ENTRY\n");
-    // Bỏ view_render.initialize() ở đây
-} break;
-
-case AC_DISPLAY_INITIAL: {
-    APP_DBG_SIG("AC_DISPLAY_INITIAL\n");
-    //view_render.initialize();
-    //view_render_display_on();
-    timer_set(AC_TASK_DISPLAY_ID,
-              AC_DISPLAY_SHOW_LOGO,
-              AC_DISPLAY_STARTUP_INTERVAL,
-              TIMER_ONE_SHOT);
-} break;
-
-        case AC_DISPLAY_SHOW_LOGO: {
-            SCREEN_TRAN(scr_welcome_handle, &scr_welcome);
+        APP_DBG_SIG("SCR_STARTUP SCREEN_ENTRY\n");
+        
         } break;
 
-        case AC_DISPLAY_BUTON_MODE_PRESSED: {
-            timer_remove_attr(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_LOGO);
-            SCREEN_TRAN(scr_welcome_handle, &scr_welcome);
-        } break;
+        case AC_DISPLAY_INITIAL:
+        {
+            view_render.initialize();
+
+            view_render_display_on();
+
+            SCREEN_TRAN(
+                scr_idle_handle,
+                &scr_idle
+            );
+        }
+        break;
 
         default: break;
     }

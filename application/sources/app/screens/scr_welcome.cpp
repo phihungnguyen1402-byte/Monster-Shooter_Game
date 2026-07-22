@@ -1,3 +1,4 @@
+#include "../game/sound_manager.h"
 #include "scr_welcome.h"
 #include "screens_bitmap.h"
 #define WELCOME_TEXT_LINE_1_LEN		(8)
@@ -48,11 +49,11 @@ void view_scr_welcome() {
 void scr_welcome_handle(ak_msg_t *msg) {
     switch (msg->sig) {
         case SCREEN_ENTRY: {
-            APP_DBG_SIG("SCREEN_ENTRY\n");
+            APP_DBG("[WELCOME] SCREEN_ENTRY\n");
             welcome_text_index = 0;
-            BUZZER_PlaySound(BUZZER_SOUND_WELCOME);
+            sound_play(BUZZER_SOUND_WELCOME);
             timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_WELCOME_TEXT_ANIM_TICK, AC_DISPLAY_WELCOME_TEXT_ANIM_TICK_INTERVAL, TIMER_PERIODIC);
-            timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE, AC_DISPLAY_IDLE_INTERVAL, TIMER_ONE_SHOT);
+            timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE, 5000, TIMER_ONE_SHOT);
         } break;
 
         case AC_DISPLAY_WELCOME_TEXT_ANIM_TICK: {

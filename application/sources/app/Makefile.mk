@@ -1,5 +1,5 @@
 include sources/app/screens/Makefile.mk
-
+include sources/app/game/Makefile.mk
 VPATH += sources/app
 
 SOURCES_CPP += sources/app/app.cpp
