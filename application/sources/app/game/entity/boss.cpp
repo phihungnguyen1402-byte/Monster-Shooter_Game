@@ -102,7 +102,7 @@ void boss_update()
     }
     else
     {
-        //sound_play(BUZZER_SOUND_BANG);
+        sound_play(BUZZER_SOUND_BANG);
 
         //====================
         // Boss attack pattern

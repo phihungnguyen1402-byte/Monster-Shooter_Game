@@ -51,7 +51,7 @@ void scr_welcome_handle(ak_msg_t *msg) {
         case SCREEN_ENTRY: {
             APP_DBG("[WELCOME] SCREEN_ENTRY\n");
             welcome_text_index = 0;
-            //sound_play(BUZZER_SOUND_WELCOME);
+            sound_play(BUZZER_SOUND_WELCOME);
             timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_WELCOME_TEXT_ANIM_TICK, AC_DISPLAY_WELCOME_TEXT_ANIM_TICK_INTERVAL, TIMER_PERIODIC);
             timer_set(AC_TASK_DISPLAY_ID, AC_DISPLAY_SHOW_IDLE, 5000, TIMER_ONE_SHOT);
         } break;

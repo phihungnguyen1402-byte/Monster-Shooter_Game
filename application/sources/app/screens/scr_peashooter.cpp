@@ -116,7 +116,7 @@ static void peashooter_fire()
         p->base.y - bullets[0].base.height
     );
 
-    //sound_play(BUZZER_SOUND_CLICK);
+    sound_play(BUZZER_SOUND_CLICK);
 }
 
 // ---------- Sinh quái mới ----------
@@ -217,8 +217,8 @@ static void peashooter_update() {
     if (warning)
     {
 
-        //sound_play(BUZZER_SOUND_3BEEP);
-        //sound_play(BUZZER_SOUND_3BEEP);
+        sound_play(BUZZER_SOUND_3BEEP);
+        sound_play(BUZZER_SOUND_3BEEP);
         if (warning_timer > 0)
         {
             warning_timer--;
@@ -279,7 +279,7 @@ static void peashooter_update() {
                 p->hp--;
             }
 
-            //sound_play(BUZZER_SOUND_3BEEP);
+            sound_play(BUZZER_SOUND_3BEEP);
 
             if (p->hp == 0)
             {
@@ -301,7 +301,7 @@ static void peashooter_update() {
                 p->hp--;
             }
 
-            //sound_play(BUZZER_SOUND_3BEEP);
+            sound_play(BUZZER_SOUND_3BEEP);
 
             if (p->hp == 0)
             {
@@ -333,12 +333,12 @@ static void peashooter_update() {
                     level = score / 10 + 1;
 
                     // Quái chết
-                    //sound_play(BUZZER_SOUND_BANG);
+                    sound_play(BUZZER_SOUND_BANG);
                 }
                 else
                 {
                     // Đạn trúng nhưng quái chưa chết
-                    //sound_play(BUZZER_SOUND_CLICK);
+                    sound_play(BUZZER_SOUND_CLICK);
                 }
                 break;
             }
@@ -365,7 +365,7 @@ static void peashooter_update() {
                 p->hp--;
             }
 
-            //sound_play(BUZZER_SOUND_CLICK);
+            sound_play(BUZZER_SOUND_CLICK);
 
             if (p->hp == 0)
             {
@@ -417,7 +417,7 @@ static void peashooter_update() {
                         return;
                     }
 
-                    //sound_play(BUZZER_SOUND_3BEEP);
+                    sound_play(BUZZER_SOUND_3BEEP);
                 }
             }
         }
