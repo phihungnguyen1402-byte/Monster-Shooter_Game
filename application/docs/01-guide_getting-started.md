@@ -63,3 +63,33 @@ Once the fork is created, GitHub redirects you to the new repository — this is
     alt="getting-started-repo-after-fork"
     src="../../resources/images/getting_started/getting_started_repo_after_fork.png" />
 </p>
+
+---
+
+## II. Quick Start Guide (Environment Setup)
+
+To build the source code and flash firmware onto the kit, you need to set up the development environment on Ubuntu/Linux. Step-by-step instructions are available here:
+
+**[AK Embedded Base Kit STM32L151 — Getting Started](https://epcb.vn/blogs/ak-embedded-software/ak-embedded-base-kit-stm32l151-getting-started)**
+
+---
+
+## III. Game Programming Workflow
+
+> **Note:** Since this is an embedded software project, you should use the **Terminal on an Ubuntu/Linux environment** to ensure the build and flashing process runs correctly.
+
+### Step 1: Create your working directory
+
+From your `Home` directory, create a folder named **Workspace** — this will hold all of your source code and programming tools.
+<p align="center">
+  <img
+    alt="getting-started-open-vscode"
+    src="../../resources/images/getting_started/getting_started_open_vscode.png" />
+</p>
+
+Inside `Workspace`, create two subdirectories:
+
+| Directory | Purpose                                                                                       |
+| --------- | --------------------------------------------------------------------------------------------- |
+| `Sources` | Holds your programming projects                                                               |
+| `Tools`   | Holds the programming tools (see details in [Section II](#ii-quick-start-guide-environment-setup)) |
