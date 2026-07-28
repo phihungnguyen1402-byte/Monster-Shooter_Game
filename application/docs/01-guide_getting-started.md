@@ -29,9 +29,9 @@ To initialize your personal project, follow these steps:
 Click the **Fork** button in the top-right corner to create a copy of the project under your personal account.
 You can also click the **Star** button next to **Fork** to support the author.
 <p align="center">
-  <img 
-    width="1338" 
-    height="640" 
+  <img
+    width="1338"
+    height="640"
     alt="getting-started-repository"
-    src="../resources/images/getting_started/getting_started_view_ak_foundation.png" />
+    src="../../resources/images/getting_started/getting_started_view_ak_foundation_repo.png" />
 </p>
