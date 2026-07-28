@@ -49,6 +49,7 @@ Click **Create fork** to create your own copy of the repository.
     alt="create-fork"
     src="../../resources/images/getting_started/getting_started_create_fork.png" />
 </p>
+
 > **Note:**
 > - Name the repository after **your game's name**.
 > - Add a brief description of your game in the **Description** field.
