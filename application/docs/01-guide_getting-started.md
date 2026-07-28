@@ -83,8 +83,8 @@ To build the source code and flash firmware onto the kit, you need to set up the
 From your `Home` directory, create a folder named **Workspace** — this will hold all of your source code and programming tools.
 <p align="center">
   <img
-    alt="getting-started-open-vscode"
-    src="../../resources/images/getting_started/getting_started_open_vscode.png" />
+    alt="getting-started-open-vscode-workspace"
+    src="../../resources/images/getting_started/getting_started_open_vscode_workspace.png" />
 </p>
 
 Inside `Workspace`, create two subdirectories:
