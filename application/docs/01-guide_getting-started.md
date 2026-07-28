@@ -35,3 +35,17 @@ You can also click the **Star** button next to **Fork** to support the author.
     alt="getting-started-repository"
     src="../../resources/images/getting_started/getting_started_view_ak_foundation.png" />
 </p>
+
+### 3. Create the fork
+
+After clicking the **Fork** button, GitHub will open the fork creation page.
+
+Click **Create fork** to create your own copy of the repository.
+
+<p align="center">
+  <img
+    width="1338"
+    height="640"
+    alt="create-fork"
+    src="../../resources/images/getting_started/getting_started_create_fork.png" />
+</p>
