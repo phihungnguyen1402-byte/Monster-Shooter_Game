@@ -21,7 +21,7 @@ bool menu_sound_on = true;
 // 1 = Normal
 // 2 = Hard
 uint8_t game_mode = 1;
-
+uint8_t game_style = 0;
 static uint16_t blink = 0;
 
 static int demo_player_x = 56;
@@ -422,7 +422,7 @@ draw_star_cutout(109,8);
 
         //----------------------------
          view_render.setTextSize(1);
-        view_render.setCursor(12,24);
+        view_render.setCursor(12,20);
 
         if(menu_index==0)
             view_render.print(">>>");
@@ -431,7 +431,7 @@ draw_star_cutout(109,8);
 
         //----------------------------
 
-        view_render.setCursor(12,38);
+        view_render.setCursor(12,32);
 
         if(menu_index==1)
             view_render.print(">>>");
@@ -448,8 +448,10 @@ draw_star_cutout(109,8);
         }
 
         //----------------------------
+        // MODE
+        //----------------------------
 
-        view_render.setCursor(12,54);
+        view_render.setCursor(12,44);
 
         if(menu_index==2)
             view_render.print(">>>");
@@ -467,6 +469,30 @@ draw_star_cutout(109,8);
         else
         {
             view_render.print("HARD");
+        }
+
+        //----------------------------
+        // STYLE
+        //----------------------------
+
+        view_render.setCursor(12,56);
+
+        if(menu_index==3)
+            view_render.print(">>>");
+
+        view_render.print(" STYLE:");
+
+        if(game_style==0)
+        {
+            view_render.print("FIGHTER");
+        }
+        else if(game_style==1)
+        {
+            view_render.print("ARCHER");
+        }
+        else
+        {
+            view_render.print("TANK");
         }
     }
 }
@@ -740,6 +766,15 @@ void scr_idle_handle(ak_msg_t *msg) {
                     game_mode = 0;
                 }
             }
+            else if(menu_index==3)
+            {
+                game_style++;
+
+                if(game_style>2)
+                {
+                    game_style=0;
+                }
+            }
         }
     }
     break;
@@ -753,7 +788,7 @@ void scr_idle_handle(ak_msg_t *msg) {
             }
             else
             {
-                menu_index=2;
+            menu_index=3;
             }
         }
     }
@@ -762,7 +797,7 @@ void scr_idle_handle(ak_msg_t *msg) {
     {
         if(menu_state==2)
         {
-            if(menu_index<2)
+            if(menu_index<3)
             {
                 menu_index++;
             }
@@ -780,4 +815,8 @@ void scr_idle_handle(ak_msg_t *msg) {
 bool game_is_hard_mode()
 {
     return (game_mode == 2);
+}
+uint8_t game_get_style()
+{
+    return game_style;
 }

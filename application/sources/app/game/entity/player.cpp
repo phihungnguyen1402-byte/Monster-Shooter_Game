@@ -2,7 +2,9 @@
 #include "player.h"
 #include "task_display.h"
 #include "../assets/sprite_player.h"
-
+#include "../assets/sprite_player_archer.h"
+#include "../assets/sprite_player_tank.h"
+#include "../../screens/scr_idle.h"
 static player_t player;
 
 

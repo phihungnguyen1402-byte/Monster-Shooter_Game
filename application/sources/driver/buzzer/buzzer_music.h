@@ -26,6 +26,7 @@ typedef enum {
 	BUZZER_SOUND_GOODBYE,
 	BUZZER_SOUND_HIGHSCORE,
 	BUZZER_SOUND_LOWSCORE,
+	BUZZER_SOUND_VICTORY,
 	BUZZER_SOUND_SUPER_MARIO,
 	BUZZER_SOUND_MERRY_CHRISTMAS,
 	BUZZER_SOUND_TONE_1,
@@ -58,6 +59,7 @@ extern const Tone_TypeDef sTone4[];
 extern const Tone_TypeDef sTone5[];
 extern const Tone_TypeDef sTone6[];
 extern const Tone_TypeDef sTone7[];
+extern const Tone_TypeDef tones_victory[];
 
 #ifdef __cplusplus
 }

@@ -6,6 +6,10 @@
 #include "../game/assets/sprite_enemy_tank.h"
 #include "../game/assets/sprite_enemy_fast.h"
 #include "../game/assets/sprite_player.h"
+#include "../game/assets/sprite_player_archer.h"
+#include "../game/assets/sprite_player_tank.h"
+#include "../game/assets/sprite_bullet_arrow.h"
+#include "../game/assets/sprite_bullet_lightning.h"
 #include "bullet.h"
 #include "enemy.h"
 #include "scr_peashooter.h"
@@ -16,6 +20,7 @@
 #include "../game/lane.h"
 #include "boss.h"
 #include "boss_bullet.h"
+
 using namespace std;
 
 // ====== Cấu hình game ======
@@ -25,7 +30,7 @@ using namespace std;
 #define PLAYER_FIRE_DELAY      2
 #define ENEMY_SPAWN_PERIOD    12
 
-
+static bool win_sound_played;
 static uint32_t score;
 static uint32_t level;
 static uint32_t tick_count;
@@ -67,6 +72,7 @@ static void peashooter_reset() {
     level = 1;
     boss_spawned = false;
     boss_dead = false;
+    win_sound_played = false;
     firework_frame = 0;
     bullet_init();
     enemy_init();
@@ -87,12 +93,30 @@ static void peashooter_fire()
         return;
     }
 
+    int bullet_x = lane_to_x(p->lane);
+
+    if(game_get_style() == 0)
+    {
+        // Fighter
+        bullet_x -= 1;
+    }
+    else if(game_get_style() == 1)
+    {
+        // Archer
+        bullet_x -= 2;
+    }
+    else if(game_get_style() == 2)
+    {
+        // Tank
+        bullet_x -= 1;
+    }
+
     bullet_spawn(
-        lane_to_x(p->lane) - bullets[0].base.width / 2,
+        bullet_x,
         p->base.y - bullets[0].base.height
     );
 
-    sound_play(BUZZER_SOUND_CLICK);
+    //sound_play(BUZZER_SOUND_CLICK);
 }
 
 // ---------- Sinh quái mới ----------
@@ -193,8 +217,8 @@ static void peashooter_update() {
     if (warning)
     {
 
-        sound_play(BUZZER_SOUND_3BEEP);
-        sound_play(BUZZER_SOUND_3BEEP);
+        //sound_play(BUZZER_SOUND_3BEEP);
+        //sound_play(BUZZER_SOUND_3BEEP);
         if (warning_timer > 0)
         {
             warning_timer--;
@@ -255,7 +279,7 @@ static void peashooter_update() {
                 p->hp--;
             }
 
-            sound_play(BUZZER_SOUND_3BEEP);
+            //sound_play(BUZZER_SOUND_3BEEP);
 
             if (p->hp == 0)
             {
@@ -277,7 +301,7 @@ static void peashooter_update() {
                 p->hp--;
             }
 
-            sound_play(BUZZER_SOUND_3BEEP);
+            //sound_play(BUZZER_SOUND_3BEEP);
 
             if (p->hp == 0)
             {
@@ -309,12 +333,12 @@ static void peashooter_update() {
                     level = score / 10 + 1;
 
                     // Quái chết
-                    sound_play(BUZZER_SOUND_BANG);
+                    //sound_play(BUZZER_SOUND_BANG);
                 }
                 else
                 {
                     // Đạn trúng nhưng quái chưa chết
-                    sound_play(BUZZER_SOUND_CLICK);
+                    //sound_play(BUZZER_SOUND_CLICK);
                 }
                 break;
             }
@@ -341,7 +365,7 @@ static void peashooter_update() {
                 p->hp--;
             }
 
-            sound_play(BUZZER_SOUND_CLICK);
+            //sound_play(BUZZER_SOUND_CLICK);
 
             if (p->hp == 0)
             {
@@ -382,19 +406,18 @@ static void peashooter_update() {
                     if (boss->hp == 0)
                     {
                         boss->active = false;
+
                         boss_dead = true;
-                        sound_play(BUZZER_SOUND_SUPER_MARIO);
-                        end_delay = 40;
 
                         score += 100;
                         level++;
 
-                        sound_play(BUZZER_SOUND_CLICK);
+                        end_delay = 40;
 
                         return;
                     }
 
-                    sound_play(BUZZER_SOUND_3BEEP);
+                    //sound_play(BUZZER_SOUND_3BEEP);
                 }
             }
         }
@@ -431,12 +454,30 @@ static void peashooter_update() {
 // ---------- Vẽ màn hình ----------
 static void view_scr_peashooter() {
     view_render.clear();
+
         /*======================
             HUD
     =======================*/
 
     if (!warning && !game_over && !boss_dead)
     {
+            //======================
+            // Background stars
+            //======================
+
+            view_render.drawPixel(48,16,WHITE);
+            view_render.drawPixel(63,24,WHITE);
+            view_render.drawPixel(82,18,WHITE);
+            view_render.drawPixel(55,35,WHITE);
+            view_render.drawPixel(76,42,WHITE);
+            view_render.drawPixel(30,28,WHITE);
+            view_render.drawPixel(94,28,WHITE);
+            view_render.drawPixel(14,16,WHITE);
+            view_render.drawPixel(110,16,WHITE);
+            view_render.drawPixel(40,40,WHITE);
+            view_render.drawPixel(67,4,WHITE);
+            view_render.drawPixel(14,38,WHITE);
+            view_render.drawPixel(110,38,WHITE);
         view_render.drawLine(
             0,
             HUD_HEIGHT,
@@ -494,11 +535,19 @@ static void view_scr_peashooter() {
     if (boss_dead)
     {
 
-    view_render.setTextSize(2);
+        if(!win_sound_played)
+        {
+            sound_play(BUZZER_SOUND_HIGHSCORE);
 
-    view_render.setCursor(22,28);
+            win_sound_played = true;
+        }
 
-    view_render.print("YOU WIN");
+
+        view_render.setTextSize(2);
+
+        view_render.setCursor(22,28);
+
+        view_render.print("YOU WIN");
     draw_firework(
         0,
         0,
@@ -532,14 +581,25 @@ static void view_scr_peashooter() {
     // Vẽ người chơi (hình chữ nhật ở đáy)
         player_t *p = player_get();
         boss_t *boss = boss_get();
+        const uint8_t *current_player_sprite = player_sprite;
+
+        if(game_get_style() == 1)
+        {
+            current_player_sprite = archer_player_sprite;
+        }
+        else if(game_get_style() == 2)
+        {
+            current_player_sprite = tank_player_sprite;
+        }
+        APP_PRINT("[DBG] PLAYER STYLE = %d\n", game_get_style());
         view_render.drawBitmap(
-        p->base.x,
-        p->base.y+2,
-        player_sprite,
-        16,
-        16,
-        WHITE
-    );
+            p->base.x,
+            p->base.y+2,
+            current_player_sprite,
+            16,
+            16,
+            WHITE
+        );
 
     // Vẽ đạn
  
@@ -548,13 +608,41 @@ static void view_scr_peashooter() {
         if (!bullets[i].base.active)
             continue;
 
-        view_render.fillRect(
-            bullets[i].base.x,
-            bullets[i].base.y,
-            bullets[i].base.width,
-            bullets[i].base.height,
-            WHITE
-        );
+        if(game_get_style() == 0)
+        {
+            // Fighter - dùng đạn cũ
+            view_render.fillRect(
+                bullets[i].base.x,
+                bullets[i].base.y,
+                bullets[i].base.width,
+                bullets[i].base.height,
+                WHITE
+            );
+        }
+        else if(game_get_style() == 1)
+        {
+            // Archer - mũi tên
+            view_render.drawBitmap(
+                bullets[i].base.x,
+                bullets[i].base.y,
+                arrow_bullet_sprite,
+                8,
+                8,
+                WHITE
+            );
+        }
+        else if(game_get_style() == 2)
+        {
+            // Tank - tia sét
+            view_render.drawBitmap(
+                bullets[i].base.x,
+                bullets[i].base.y,
+                lightning_bullet_sprite,
+                4,
+                8,
+                WHITE
+            );
+        }
     }
     //====================
     // Vẽ đạn Boss
@@ -629,19 +717,19 @@ static void view_scr_peashooter() {
     //==================
     // Vẽ lane
     //==================
-    if (!boss_spawned)
-    {
-        for (int i = 1; i < LANE_COUNT; i++)
-        {
-            view_render.drawLine(
-                LANE_START_X + i * LANE_WIDTH,
-                HUD_HEIGHT + 1,
-                LANE_START_X + i * LANE_WIDTH,
-                PLAYER_LINE_Y,
-                WHITE
-            );
-        }
-    }
+    //if (!boss_spawned)
+    //{
+     //   for (int i = 1; i < LANE_COUNT; i++)
+      //  {
+     //       view_render.drawLine(
+     //           LANE_START_X + i * LANE_WIDTH,
+     //           HUD_HEIGHT + 1,
+      //          LANE_START_X + i * LANE_WIDTH,
+      //          PLAYER_LINE_Y,
+       //         WHITE
+     //       );
+      //  }
+    //}
 
     
     // Vẽ điểm số ở góc trên
