@@ -30,8 +30,8 @@ Click the **Fork** button in the top-right corner to create a copy of the projec
 You can also click the **Star** button next to **Fork** to support the author.
 <p align="center">
   <img 
-  width="1338" 
-  height="640" 
-  alt="getting-started-repository"
-  src="../../resources/images/getting_started/getting_started_view_ak_foundation.png" />
+    width="1338" 
+    height="640" 
+    alt="getting-started-repository"
+    src="../resources/images/getting_started/getting_started_view_ak_foundation.png" />
 </p>
