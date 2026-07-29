@@ -98,3 +98,18 @@ Inside `Workspace`, create two subdirectories:
     alt="Create sources and tools folders"
     src="../../resources/images/getting_started/getting_started_create_sources_and_tools_folders.png" />
 </p>
+
+### Step 2: Clone the repo to your machine
+
+> **Note:** This step only needs to be done **once** when starting the project.
+
+Open a **Terminal** inside the `Sources` directory and run the following command (replace the URL with your own repository link):
+
+```bash
+git clone https://github.com/<your-username>/<your-cloned-repo-name>.git
+```
+<p align="center">
+  <img
+    alt="Open terminal in sources folder"
+    src="../../resources/images/getting_started/getting_started_open_terminal_in_sources.png" />
+</p>
