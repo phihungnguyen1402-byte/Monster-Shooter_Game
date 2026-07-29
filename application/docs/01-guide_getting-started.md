@@ -209,3 +209,40 @@ git push origin main
     alt="Push code to GitHub"
     src="../../resources/images/getting_started/getting_started_push_code_to_github.png" />
 </p>
+
+**Repository updated on GitHub:**
+<p align="center">
+  <img
+    alt="Push code to GitHub"
+    src="../../resources/images/getting_started/getting_started_view_repo_on_github_part1.png" />
+</p>
+
+From here, anyone can visit your GitHub link to follow your progress and try out the game you've built.
+
+---
+
+## References
+
+- Blog: [AK Embedded Software](https://epcb.vn/blogs/ak-embedded-software)
+
+---
+
+## Contact & Support
+
+<p style="font-size: 20px;"><strong>Nguyen Phi Hung</strong> - Software Engineer - Embedded Systems</p>
+
+``` Note
+Thank you for visiting this repository.
+If you have any questions, suggestions, or feedback about this project or firmware development, feel free to contact me directly.
+```
+<a href="https://github.com/nguyenphihung">
+  <img src="https://img.shields.io/badge/github.com/phihungnguyen1402-byte=for-the-badge&logo=github&logoColor=white"/>
+</a>
+
+<a href="https://www.linkedin.com/in/cao-trong-phuoc/">
+  <img src="https://img.shields.io/badge/LinkedIn-Cao%20Trong%20Phuoc-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
+</a>
+
+<p align="center">
+  <i>Happy coding, and may you build some truly fun games!</i>
+</p>
