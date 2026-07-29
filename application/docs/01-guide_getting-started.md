@@ -184,9 +184,10 @@ All game logic lives in the `application/sources/app` directory.
     src="../../resources/images/getting_started/getting_started_add_bitmap_and_peashooter_to_project.png" />
 </p>
 
-**Step 3.8 —** Build and flash the firmware onto the kit (see detailed instructions in [Section II](#ii-quick-start-guide-environment-setup)):
+## Step 3.8 — Build and flash the firmware onto the kit (see detailed instructions in Section II)
+
 <p align="center">
   <img
     alt="Update switch case in task display"
-    src="../../resources/images/getting_started/guide-getting-started/getting_started_final_result.png" />
+    src="../../resources/images/getting_started/getting_started_update_switch_case_in_task_display.png" />
 </p>
