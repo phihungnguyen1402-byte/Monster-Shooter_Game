@@ -113,3 +113,16 @@ git clone https://github.com/<your-username>/<your-cloned-repo-name>.git
     alt="Open terminal in sources folder"
     src="../../resources/images/getting_started/getting_started_open_terminal_in_sources.png" />
 </p>
+
+---
+
+### Step 3: Modify the Game
+
+Open **VSCode** on Linux, then open the freshly cloned repository to start coding.
+
+First, set your game's name in the `Makefile.mk` file located in the `application/` directory:
+<p align="center">
+  <img
+    alt="Rename repository for game"
+    src="../../resources/images/getting_started/getting_started_rename_repo_for_game.png" />
+</p>
