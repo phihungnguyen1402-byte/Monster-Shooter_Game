@@ -143,3 +143,29 @@ All game logic lives in the `application/sources/app` directory.
     src="../../resources/images/getting_started/getting_started_create_peashooter_header.png" />
 </p>
 **Step 3.2 —** Create `scr_peashooter.cpp` to handle the bitmap data and render the Peashooter on the display:
+<p align="center">
+  <img
+    alt="Build and run application"
+    src="../../resources/images/getting_started/getting_started_create_peashooter_source.png" />
+</p>
+
+**Step 3.3 —** Create a header file `screens_bitmap.h` in the `screens/` directory to declare shared bitmap data:
+<p align="center">
+  <img
+    alt="Build and run application"
+    src="../../resources/images/getting_started/getting_started_create_bitmap_header.png" />
+</p>
+
+**Step 3.4 —** Create `screens_bitmap.cpp` containing the Peashooter's bitmap data:
+<p align="center">
+  <img
+    alt="Build and run application"
+    src="../../resources/images/getting_started/getting_started_create_bitmap_source.png" />
+</p>
+
+**Step 3.5 —** Include the Peashooter header file in `task_display.h`:
+<p align="center">
+  <img
+    alt="Build and run application"
+    src="../../resources/images/getting_started/getting_started_include_headers_in_task_display.png" />
+</p>
