@@ -189,5 +189,5 @@ All game logic lives in the `application/sources/app` directory.
 <p align="center">
   <img
     alt="Update switch case in task display"
-    src="../../resources/images/getting_started/getting_started_update_switch_case_in_task_display.png" />
+    src="../../resources/images/getting_started/getting_started_final_result.png" />
 </p>
