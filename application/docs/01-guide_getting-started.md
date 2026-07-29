@@ -126,3 +126,20 @@ First, set your game's name in the `Makefile.mk` file located in the `applicatio
     alt="Rename repository for game"
     src="../../resources/images/getting_started/getting_started_rename_repo_for_game.png" />
 </p>
+
+All game logic lives in the `application/sources/app` directory.
+<p align="center">
+  <img
+    alt="Build and run application"
+    src="../../resources/images/getting_started/getting_started_build_and_run_application.png" />
+</p>
+
+#### Example: Displaying the Peashooter screen in the Plants vs. Zombies game
+
+**Step 3.1 —** Create a header file `scr_peashooter.h` in the `screens/` directory to declare the functions that draw the Peashooter screen:
+<p align="center">
+  <img
+    alt="Build and run application"
+    src="../../resources/images/getting_started/getting_started_create_peashooter_header.png" />
+</p>
+**Step 3.2 —** Create `scr_peashooter.cpp` to handle the bitmap data and render the Peashooter on the display:
