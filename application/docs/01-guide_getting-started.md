@@ -191,3 +191,21 @@ All game logic lives in the `application/sources/app` directory.
     alt="Update switch case in task display"
     src="../../resources/images/getting_started/getting_started_final_result.png" />
 </p>
+---
+
+### Step 4: Push your code to GitHub
+
+After finishing a feature, save your progress to your personal repo with the commands below (run them from the **root directory** of the repo):
+
+```bash
+git add .
+git commit -m "Create screen of Peashooter"
+git push origin main
+```
+
+**Result after running the commands:**
+<p align="center">
+  <img
+    alt="Push code to GitHub"
+    src="../../resources/images/getting_started/getting_started_push_code_to_github.png" />
+</p>
