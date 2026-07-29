@@ -93,3 +93,8 @@ Inside `Workspace`, create two subdirectories:
 | --------- | --------------------------------------------------------------------------------------------- |
 | `Sources` | Holds your programming projects                                                               |
 | `Tools`   | Holds the programming tools (see details in [Section II](#ii-quick-start-guide-environment-setup)) |
+<p align="center">
+  <img
+    alt="Create sources and tools folders"
+    src="../../resources/images/getting_started/getting_started_create_sources_and_tools_folders.png" />
+</p>
