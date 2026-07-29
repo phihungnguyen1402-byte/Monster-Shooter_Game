@@ -169,3 +169,24 @@ All game logic lives in the `application/sources/app` directory.
     alt="Build and run application"
     src="../../resources/images/getting_started/getting_started_include_headers_in_task_display.png" />
 </p>
+
+**Step 3.6 —** Update the `AC_DISPLAY_BUTTON_MODE_RELEASED` case:
+<p align="center">
+  <img
+    alt="Update switch case in task display"
+    src="../../resources/images/getting_started/getting_started_update_switch_case_in_task_display.png" />
+</p>
+
+**Step 3.7 —** Add the two files `scr_peashooter.cpp` and `screens_bitmap.cpp` to `Makefile.mk` inside the `screens/` directory so they get compiled:
+<p align="center">
+  <img
+    alt="Add bitmap and peashooter to project"
+    src="../../resources/images/getting_started/getting_started_add_bitmap_and_peashooter_to_project.png" />
+</p>
+
+**Step 3.8 —** Build and flash the firmware onto the kit (see detailed instructions in [Section II](#ii-quick-start-guide-environment-setup)):
+<p align="center">
+  <img
+    alt="Update switch case in task display"
+    src="../../resources/images/getting_started/guide-getting-started/getting_started_final_result.png" />
+</p>
