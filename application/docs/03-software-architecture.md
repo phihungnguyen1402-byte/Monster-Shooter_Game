@@ -364,26 +364,26 @@ end
 
 The software architecture follows several embedded software engineering principles to improve maintainability and scalability.
 
-### Modular Design
+### -Modular Design
 
 Each subsystem is implemented in an independent module, including player control, enemy management, rendering, collision detection, and sound.
 
-### Event-Driven Programming
+### -Event-Driven Programming
 
 The game is updated through periodic timer events and button events instead of using a blocking loop.
 
-### Object Pool
+### -Object Pool
 
 Bullets, enemies, and boss bullets are allocated statically to eliminate dynamic memory allocation during gameplay.
 
-### Separation of Responsibilities
+### -Separation of Responsibilities
 
 Rendering, game logic, input handling, collision detection, and sound management are implemented independently to reduce module coupling.
 
-### Reusability
+### -Reusability
 
 All game entities share a common base entity structure, allowing common operations such as rendering and collision detection to be reused across different object types.
-### Static Memory Allocation
+### -Static Memory Allocation
 
 All gameplay objects, including players, enemies, bullets, and boss bullets, are allocated statically. This eliminates dynamic memory allocation during runtime, providing deterministic memory usage and improving reliability on resource-constrained embedded systems.
 ## 7. Source Code Organization
