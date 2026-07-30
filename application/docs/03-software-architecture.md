@@ -6,33 +6,35 @@
 
 The project follows a modular architecture where the user interface, gameplay logic, rendering system, entity management, and hardware abstraction are separated into independent modules. This organization makes the project easier to maintain, extend, and debug.
 
-The gameplay is driven by an event-based update loop. Each frame updates the game state, processes entity behaviors, performs collision detection, and renders the final frame to the OLED display.
+The gameplay is driven by periodic timer events and button events. During each timer tick, the game processes player input, updates all entities, performs collision detection, updates the game state, and renders the next frame on the OLED display.
 
 ## 2. High-Level Architecture
 
 ```mermaid
 flowchart TD
 
-Application["Application"]
+Application
 
 Application --> Screens
 Application --> Game
+Application --> Driver
 
 Game --> Engine
 Game --> Entity
 Game --> Assets
 Game --> Sound
+Game --> GameConfig
+Game --> Lane
 
 Engine --> GameManager
-Engine --> Collision
 Engine --> Renderer
+Engine --> Collision
 Engine --> Input
 
-Entity --> Player
-Entity --> Bullet
-Entity --> Enemy
-Entity --> Boss
-Entity --> BossBullet
+Driver --> OLED
+Driver --> Button
+Driver --> Timer
+Driver --> Buzzer
 ```
 
 ## 3. Module Responsibilities
@@ -43,7 +45,8 @@ Entity --> BossBullet
 | Engine | Control gameplay logic and rendering |
 | Entity | Define all game objects |
 | Assets | Store sprite resources |
-| Sound | Manage buzzer sound effects |
+| Sound | Manage sound effects and provide sound enable/disable control |
+| Driver | Provide hardware abstraction for OLED, buttons, timer, and buzzer |
 ### Engine Components
 
 | Component | Responsibility |
@@ -69,9 +72,9 @@ The runtime flow describes how the game processes one frame during execution. Ev
 ```mermaid
 flowchart LR
 
-A[Game Loop]
+A[Timer Update]
 
-A --> B[Read Input]
+A --> B[Read Button Events]
 
 B --> C[Update Player]
 
@@ -85,13 +88,17 @@ F --> G[Update Boss Bullets]
 
 G --> H[Collision Detection]
 
-H --> I[Update Game State]
+H --> I[Update HP / Score / Level]
 
-I --> J[Render Frame]
+I --> J[Update Game State]
 
-J --> K[OLED Display]
+J --> K[Spawn Boss or Enemy]
 
-K --> A
+K --> L[Render Frame]
+
+L --> M[OLED Display]
+
+M --> A
 ```
 ## 5. Game Logic Sequences
 
@@ -138,44 +145,54 @@ Player->>Screen: Press UP / DOWN / MODE
 
 alt UP or DOWN
 
-    Screen->>Screen: Check move_delay
+Screen->>Screen: Check move delay
 
-    Screen->>Player: Change lane
+Screen->>Player: Change lane
+
+Player->>Player: lane_to_x()
+
+Player->>Player: Update X position
 
 else MODE
 
-    Screen->>Screen: Check fire_delay
+Screen->>Screen: Check fire delay
 
-    Screen->>Bullet: bullet_has_free_slot()
+Screen->>Bullet: bullet_has_free_slot()
 
-    Bullet-->>Screen: Slot available
+Bullet-->>Screen: Slot available
 
-    Screen->>Bullet: bullet_spawn()
+Screen->>Bullet: bullet_spawn()
 
-    Screen->>Sound: Play fire sound
+Screen->>Screen: Reset fire timer
+
+Screen->>Sound: sound_play(FIRE)
 
 end
 ```
 ### 5.3 Enemy Spawn Sequence
 
-During each game update, all active bullets move upward. The game checks collisions between bullets and enemies using AABB collision detection. When a collision occurs, the enemy takes damage. Destroyed enemies increase the player's score and level progression.
+Enemy spawning is performed periodically based on the current game level and difficulty mode. The game determines when a new enemy should appear, selects an enemy type, and places it into an available lane.
 
 ```mermaid
 sequenceDiagram
 
-participant GameLoop
+participant Timer
 participant Game
 participant Enemy
 
-GameLoop->>Game: Check spawn period
+Timer->>Game: Spawn timer expired
 
-alt Spawn time
+Game->>Game: Boss active?
 
-    Game->>Game: Select difficulty
+alt Boss not active
 
-    Game->>Game: Select enemy type
+Game->>Game: Check difficulty
 
-    Game->>Enemy: enemy_spawn()
+Game->>Game: Select enemy type
+
+Game->>Game: Select lane
+
+Game->>Enemy: enemy_spawn()
 
 end
 ```
@@ -189,11 +206,15 @@ sequenceDiagram
 
 participant Timer
 participant Screen
+participant Player
 participant Bullet
 participant Enemy
 participant Boss
+participant Collision
 
 Timer->>Screen: Update Tick
+
+Screen->>Player: player_update()
 
 Screen->>Bullet: bullet_update()
 
@@ -203,37 +224,185 @@ Screen->>Boss: boss_update()
 
 Screen->>Boss: boss_bullet_update()
 
-Screen->>Screen: Check collisions
+Screen->>Collision: collision_check()
 
-Screen->>Screen: Spawn enemies
+Screen->>Screen: Update HP
+
+Screen->>Screen: Update Score
+
+Screen->>Screen: Update Level
+
+Screen->>Screen: Spawn Enemy
+
+Screen->>Screen: Check Boss Spawn
 ```
-## 5.5 Collision Detection
+### 5.5 Collision Detection Sequence
+
 ```mermaid
 sequenceDiagram
 
-participant Collision
 participant Bullet
+participant Collision
 participant Enemy
+participant BossBullet
 participant Boss
 participant Player
+participant Game
 
 Bullet->>Collision: Check Bullet vs Enemy
 
 Collision->>Enemy: enemy_damage()
 
-Enemy-->>Player: Increase score
+alt Enemy destroyed
 
-Boss->>Collision: Check Boss Bullet
+Enemy-->>Game: Increase Score
+
+Game->>Game: Update Level
+
+end
+
+Enemy->>Collision: Check Enemy vs Player
 
 Collision->>Player: Reduce HP
 
-Player->>Collision: Check Bullet vs Boss
+BossBullet->>Collision: Check Boss Bullet vs Player
+
+Collision->>Player: Reduce HP
+
+Bullet->>Collision: Check Bullet vs Boss
 
 Collision->>Boss: Reduce HP
-```
-## 5.6 Boss Battle
 
-## 5.7 Game Ending
-   
+alt Boss HP == 0
+
+Boss-->>Game: Victory
+
+end
+```
+### 5.6 Boss Battle
+
+The boss battle begins after the player reaches the required level. Unlike regular enemies, the boss has multiple attack phases that change according to its remaining HP.
+
+```mermaid
+sequenceDiagram
+
+participant Game
+participant Boss
+participant BossBullet
+participant Player
+
+Game->>Boss: boss_spawn()
+
+loop Every Update
+
+Boss->>Boss: Move
+
+Boss->>Boss: Update fire timer
+
+alt Fire timer expired
+
+Boss->>Boss: Select attack pattern
+
+alt HP > 20
+
+Boss->>BossBullet: Spawn center bullet
+
+else HP > 10
+
+Boss->>BossBullet: Spawn two bullets
+
+else HP <= 10
+
+Boss->>BossBullet: Spawn two bullets
+
+Boss->>Boss: Reduce fire delay
+
+end
+
+end
+
+Player->>Boss: Bullet Hit
+
+Boss->>Boss: Reduce HP
+
+end
+
+alt Boss HP == 0
+
+Boss-->>Game: Victory
+
+end
+```
+### 5.7 Game Ending
+
+The game ends when either the player loses all HP or defeats the final boss.
+
+```mermaid
+sequenceDiagram
+
+participant Player
+participant Boss
+participant Game
+participant Screen
+
+alt Player HP == 0
+
+Player-->>Game: Game Over
+
+Game->>Screen: Show Game Over Screen
+
+else Boss HP == 0
+
+Boss-->>Game: Victory
+
+Game->>Screen: Show Victory Screen
+
+end
+```
 
 ## 6. Design Principles
+
+The software architecture follows several embedded software engineering principles to improve maintainability and scalability.
+
+### Modular Design
+
+Each subsystem is implemented in an independent module, including player control, enemy management, rendering, collision detection, and sound.
+
+### Event-Driven Programming
+
+The game is updated through periodic timer events and button events instead of using a blocking loop.
+
+### Object Pool
+
+Bullets, enemies, and boss bullets are allocated statically to eliminate dynamic memory allocation during gameplay.
+
+### Separation of Responsibilities
+
+Rendering, game logic, input handling, collision detection, and sound management are implemented independently to reduce module coupling.
+
+### Reusability
+
+All game entities share a common base entity structure, allowing common operations such as rendering and collision detection to be reused across different object types.
+### Static Memory Allocation
+
+All gameplay objects, including players, enemies, bullets, and boss bullets, are allocated statically. This eliminates dynamic memory allocation during runtime, providing deterministic memory usage and improving reliability on resource-constrained embedded systems.
+## 7. Source Code Organization
+
+The software is organized into independent modules to simplify maintenance and future development.
+
+| Directory              | Responsibility                                              |
+| ---------------------- | ----------------------------------------------------------- |
+| `sources/app/`         | Screen management and application logic                     |
+| `sources/game/engine/` | Game manager, rendering, collision detection, and input     |
+| `sources/game/entity/` | Player, enemy, boss, bullets, and shared entity definitions |
+| `sources/game/assets/` | Bitmap sprites and graphical resources                      |
+| `sources/game/`        | Shared gameplay configuration, lane mapping, and utilities  |
+| `sources/driver/`      | OLED, buttons, timer, buzzer, and other hardware drivers    |
+
+## 8. Summary
+
+The project adopts a modular event-driven software architecture specifically designed for the STM32L151 embedded platform.
+
+Gameplay logic, rendering, entity management, collision detection, sound, and hardware drivers are organized into independent modules to improve maintainability, scalability, and code reuse.
+
+The use of static memory allocation and object pools ensures deterministic memory usage, making the system suitable for resource-constrained embedded environments.
