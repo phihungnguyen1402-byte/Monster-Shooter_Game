@@ -75,21 +75,23 @@ A --> B[Read Input]
 
 B --> C[Update Player]
 
-C --> D[Update Enemy]
+C --> D[Update Bullets]
 
-D --> E[Update Boss]
+D --> E[Update Enemies]
 
-E --> F[Update Bullets]
+E --> F[Update Boss]
 
-F --> G[Collision Detection]
+F --> G[Update Boss Bullets]
 
-G --> H[Update Score]
+G --> H[Collision Detection]
 
-H --> I[Render Frame]
+H --> I[Update Game State]
 
-I --> J[OLED Display]
+I --> J[Render Frame]
 
-J --> A
+J --> K[OLED Display]
+
+K --> A
 ```
 ## 5. Game Logic Sequences
 
@@ -114,12 +116,13 @@ GameManager->>GameManager: peashooter_reset()
 GameManager->>Player: player_init()
 GameManager->>Enemy: enemy_init()
 GameManager->>Boss: boss_init()
+
 GameManager->>GameManager: bullet_init()
 GameManager->>GameManager: boss_bullet_init()
 
 GameManager->>Timer: timer_set()
 ```
-### 5.2 Player Shooting Sequence
+### 5.2 Player Input Sequence
 
 When the player presses the MODE button, the game checks whether the player can fire. If a bullet slot is available, a new bullet is created and a firing sound is played.
 
@@ -131,20 +134,29 @@ participant Screen
 participant Bullet
 participant Sound
 
-Player->>Screen: Press MODE button
+Player->>Screen: Press UP / DOWN / MODE
 
-Screen->>Screen: Check fire delay
+alt UP or DOWN
 
-Screen->>Bullet: bullet_has_free_slot()
+    Screen->>Screen: Check move_delay
 
-Bullet-->>Screen: Free slot available
+    Screen->>Player: Change lane
 
-Screen->>Bullet: bullet_spawn()
+else MODE
 
-Screen->>Sound: Play fire sound
+    Screen->>Screen: Check fire_delay
+
+    Screen->>Bullet: bullet_has_free_slot()
+
+    Bullet-->>Screen: Slot available
+
+    Screen->>Bullet: bullet_spawn()
+
+    Screen->>Sound: Play fire sound
+
+end
 ```
-
-### 5.3 Bullet Update and Collision Sequence
+### 5.3 Enemy Spawn Sequence
 
 During each game update, all active bullets move upward. The game checks collisions between bullets and enemies using AABB collision detection. When a collision occurs, the enemy takes damage. Destroyed enemies increase the player's score and level progression.
 
@@ -152,74 +164,76 @@ During each game update, all active bullets move upward. The game checks collisi
 sequenceDiagram
 
 participant GameLoop
-participant Bullet
-participant Collision
+participant Game
 participant Enemy
-participant GameManager
 
-GameLoop->>Bullet: bullet_update()
+GameLoop->>Game: Check spawn period
 
-loop Active bullets
+alt Spawn time
 
-    Bullet->>Collision: collision_check()
+    Game->>Game: Select difficulty
 
-    Collision->>Enemy: enemy_damage(1)
+    Game->>Game: Select enemy type
 
-    alt Enemy destroyed
-
-        Enemy-->>GameManager: Increase score
-
-        GameManager-->>GameManager: Update level
-
-    else Enemy survives
-
-        Enemy-->>Enemy: Continue moving
-
-    end
+    Game->>Enemy: enemy_spawn()
 
 end
 ```
 
-### 5.4 Enemy Lifecycle Sequence
+### 5.4 Gameplay Update Sequence
 
 Enemies are spawned periodically according to the current difficulty level. During each update, enemies move downward. If an enemy reaches the defense line or collides with the player, the player's HP decreases. Destroyed enemies are removed from the game.
 
 ```mermaid
 sequenceDiagram
 
-participant GameLoop
+participant Timer
+participant Screen
+participant Bullet
 participant Enemy
+participant Boss
+
+Timer->>Screen: Update Tick
+
+Screen->>Bullet: bullet_update()
+
+Screen->>Enemy: enemy_update()
+
+Screen->>Boss: boss_update()
+
+Screen->>Boss: boss_bullet_update()
+
+Screen->>Screen: Check collisions
+
+Screen->>Screen: Spawn enemies
+```
+## 5.5 Collision Detection
+```mermaid
+sequenceDiagram
+
+participant Collision
+participant Bullet
+participant Enemy
+participant Boss
 participant Player
 
-GameLoop->>Enemy: Spawn enemy
+Bullet->>Collision: Check Bullet vs Enemy
 
-loop Every game tick
+Collision->>Enemy: enemy_damage()
 
-    GameLoop->>Enemy: enemy_update()
+Enemy-->>Player: Increase score
 
-    alt Reach player line
+Boss->>Collision: Check Boss Bullet
 
-        Enemy->>Player: Damage HP
+Collision->>Player: Reduce HP
 
-        Enemy-->>Enemy: Remove
+Player->>Collision: Check Bullet vs Boss
 
-    else Hit by bullet
-
-        Enemy-->>Enemy: Destroy
-
-    else
-
-        Enemy-->>Enemy: Continue moving
-
-    end
-
-end
+Collision->>Boss: Reduce HP
 ```
+## 5.6 Boss Battle
 
-    5.5 Boss
-
-    5.6 Collision
-
-    5.7 Game State
+## 5.7 Game Ending
+   
 
 ## 6. Design Principles
