@@ -128,13 +128,63 @@ M --> O
 | Boss Battle | Fight against the final boss |
 | Victory | Display winning animation |
 | Game Over | Display losing screen |
-
 ## 5. Controls
 
----
+The game is controlled using the three physical buttons available on the AK Base Kit STM32L151 board.
 
+| Button | Function |
+|---------|----------|
+| UP | Move the player upward or navigate upward in menus |
+| DOWN | Move the player downward or navigate downward in menus |
+| MODE | Confirm selections, start the game, and fire bullets during gameplay |
 ## 6. Project Structure
 
----
+The project is organized into multiple modules to separate the application layer, gameplay logic, hardware drivers, and project resources. This modular organization improves code readability, simplifies maintenance, and makes future extensions easier.
+
+```mermaid
+flowchart TD
+
+Project["Monster Shooter Game"]
+
+Project --> Application
+Project --> Resources
+Project --> Hardware
+Project --> Boot
+
+Application --> Docs
+Application --> Sources
+
+Sources --> App
+Sources --> Driver
+Sources --> Game
+
+Game --> Engine
+Game --> Entity
+Game --> Assets
+Game --> Sound
+
+Engine --> GameManager
+Engine --> Renderer
+Engine --> Collision
+Engine --> Input
+```
+
+
+| Folder | Description |
+|---------|-------------|
+| application | Main application source code |
+| docs | Project documentation |
+| sources | Main firmware source code |
+| app | Screen management and application entry |
+| driver | Hardware abstraction layer |
+| game | Game implementation |
+| engine | Game engine modules |
+| entity | Player, enemy, bullet and boss objects |
+| assets | Sprite resources |
+| sound | Sound management |
+| resources | Documentation resources and images |
+| hardware | Hardware design files |
+| boot | Bootloader project |
+
 
 ## 7. Game Screens

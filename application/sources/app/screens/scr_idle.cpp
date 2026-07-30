@@ -391,10 +391,11 @@ draw_star_cutout(109,8);
 
         if ((blink / 15) % 2 == 0)
         {
-            view_render.setCursor(35,10);
+            view_render.setCursor(35,15);
             view_render.print("PRESS MODE");
-            view_render.setCursor(45,20);
-            view_render.print("to play");
+            
+            view_render.setCursor(21,30);
+            view_render.print("Monster Shooter");
         }
 
     }
