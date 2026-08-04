@@ -1,11 +1,28 @@
 ## Gameplay Demo
 
+<h2 align="center">Gameplay Demo</h2>
+
+<h3 align="center">Normal Gameplay</h3>
+
 <div align="center">
 
-<video 
+<video
 src="https://github.com/user-attachments/assets/9ff50a6e-4cec-4256-b37b-cd22d1276668"
 controls
-width="480">
+width="640">
+</video>
+
+</div>
+
+
+<h3 align="center">Advanced Gameplay</h3>
+
+<div align="center">
+
+<video
+src="https://github.com/user-attachments/assets/00bdb02a-7938-4d8d-89b8-dca28622c03d"
+controls
+width="640">
 </video>
 
 </div>
