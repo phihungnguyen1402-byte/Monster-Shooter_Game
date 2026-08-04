@@ -7,7 +7,7 @@
 <div align="center">
 
 <video
-src="https://github.com/user-attachments/assets/00bdb02a-7938-4d8d-89b8-dca28622c03d"
+src="https://github.com/user-attachments/assets/6b4184b1-db5c-4b26-8016-f5a1f6645dcd"
 controls
 width="640">
 </video>
@@ -15,12 +15,12 @@ width="640">
 </div>
 
 
-<h3 align="center">Advanced Gameplay</h3>
+<h3 align="center">Boss Gameplay</h3>
 
 <div align="center">
 
 <video
-src="https://github.com/user-attachments/assets/9ff50a6e-4cec-4256-b37b-cd22d1276668"
+src="https://github.com/user-attachments/assets/2105f960-b772-44c0-aa0e-dd4f937f867b"
 controls
 width="640">
 </video>
