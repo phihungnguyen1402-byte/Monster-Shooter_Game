@@ -1,3 +1,15 @@
+## Gameplay Demo
+
+<div align="center">
+
+<video 
+src="https://github.com/user-attachments/assets/9ff50a6e-4cec-4256-b37b-cd22d1276668"
+controls
+width="480">
+</video>
+
+</div>
+
 # AK Embedded Base Kit - STM32L151
 
 [<img src="hardware/images/ak-foundation-logo.png" width="240"/>](https://github.com/the-ak-foundation)
