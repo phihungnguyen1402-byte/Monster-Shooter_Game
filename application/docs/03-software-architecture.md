@@ -399,10 +399,3 @@ The software is organized into independent modules to simplify maintenance and f
 | `sources/game/`        | Shared gameplay configuration, lane mapping, and utilities  |
 | `sources/driver/`      | OLED, buttons, timer, buzzer, and other hardware drivers    |
 
-## 8. Summary
-
-The project adopts a modular event-driven software architecture specifically designed for the STM32L151 embedded platform.
-
-Gameplay logic, rendering, entity management, collision detection, sound, and hardware drivers are organized into independent modules to improve maintainability, scalability, and code reuse.
-
-The use of static memory allocation and object pools ensures deterministic memory usage, making the system suitable for resource-constrained embedded environments.

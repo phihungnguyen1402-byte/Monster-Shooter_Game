@@ -8,8 +8,6 @@ This project is a 2D lane-based shooting game developed for the AK Base Kit STM3
 
 In the game, the player controls a fighter aircraft that moves between six lanes, shoots incoming enemies, survives multiple enemy waves, and defeats a final boss. Different enemy types, player classes, difficulty modes, sound effects, and boss attack patterns provide a more engaging gameplay experience.
 
-The project demonstrates the application of embedded software engineering concepts, including event-driven programming, object-oriented game organization, sprite rendering, collision detection using Axis-Aligned Bounding Box (AABB), finite state game flow, and object pool memory management. Besides creating an enjoyable game, this project also serves as an example of how game architecture can be designed and implemented on resource-constrained embedded systems.
-
 ## 2. Hardware
 
 The game is designed to run on the AK Base Kit STM32L151 development board. The following hardware components are used throughout the project.
@@ -185,6 +183,3 @@ Engine --> Input
 | resources | Documentation resources and images |
 | hardware | Hardware design files |
 | boot | Bootloader project |
-
-
-## 7. Game Screens

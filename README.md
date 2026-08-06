@@ -1,7 +1,5 @@
 ## Gameplay Demo
 
-<h2 align="center">Gameplay Demo</h2>
-
 <h3 align="center">Normal Gameplay</h3>
 
 <div align="center">
