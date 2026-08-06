@@ -27,6 +27,30 @@ width="640">
 
 </div>
 
+<div align="center">
+
+<table>
+<tr>
+
+<td align="center">
+<img src="resources/images/demo.png" width="350"><br>
+<b>Demo Screen</b>
+</td>
+
+<td align="center">
+<img src="resources/images/play.png" width="350"><br>
+<b>Gameplay Screen</b>
+</td>
+
+<td align="center">
+<img src="resources/images/settings.png" width="350"><br>
+<b>Settings Screen</b>
+</td>
+
+</tr>
+</table>
+
+</div>
 # AK Embedded Base Kit - STM32L151
 
 [<img src="hardware/images/ak-foundation-logo.png" width="240"/>](https://github.com/the-ak-foundation)
