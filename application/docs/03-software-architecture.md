@@ -398,4 +398,3 @@ The software is organized into independent modules to simplify maintenance and f
 | `sources/game/assets/` | Bitmap sprites and graphical resources                      |
 | `sources/game/`        | Shared gameplay configuration, lane mapping, and utilities  |
 | `sources/driver/`      | OLED, buttons, timer, buzzer, and other hardware drivers    |
-

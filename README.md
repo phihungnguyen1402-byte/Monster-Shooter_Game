@@ -1,5 +1,7 @@
 ## Gameplay Demo
-
+<p align="center">
+  <img src="resources/images/screens/monster-shooter-banner.gif" width="1000">
+</p>
 <h3 align="center">Normal Gameplay</h3>
 
 <div align="center">
