@@ -54,16 +54,52 @@ and fights the boss to progress through the game.
 
 The game consists of several interactive objects that control the gameplay:
 
-| Bitmap | Object Name | Description |
-|:---:|:---|:---|
-| <img src="resources/images/bitmap/player.png" width="110" style="background-color: black;"> | **Player** | The main player-controlled spaceship. The player moves horizontally and fires projectiles to destroy enemies. |
-| <img src="resources/images/bitmap/bullet_fighter.png" width="110" style="background-color: black;"> | **Player Bullet** | A projectile fired by the player. It travels upward and damages enemies and the boss. |
-| <img src="resources/images/bitmap/enemy.png" width="110" style="background-color: black;"> | **Normal Enemy** | The standard enemy type. It moves toward the player and can damage the player on collision. |
-| <img src="resources/images/bitmap/enemy_tank.png" width="110" style="background-color: black;"> | **Tank Enemy** | A durable enemy with higher health and requires more attacks to destroy. |
-| <img src="resources/images/bitmap/enemy_fast.png" width="110" style="background-color: black;"> | **Fast Enemy** | A fast-moving enemy that increases gameplay difficulty. |
-| <img src="resources/images/bitmap/boss.png" width="110" style="background-color: black;"> | **Boss** | A powerful enemy that appears at the boss level. The boss has high HP and launches projectiles at the player. |
-| <img src="resources/images/bitmap/bullet_arrow.png" width="110" style="background-color: black;"> | **Boss Bullet** | A projectile fired by the boss. The player must avoid it to prevent HP loss. |
-
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center;">Bitmap</th>
+      <th style="text-align: left;">Object Name</th>
+      <th style="text-align: left;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="background-color: black; text-align: center;"><img src="resources/images/bitmap/player.png" width="110"></td>
+      <td><strong>Player</strong></td>
+      <td>The main player-controlled spaceship. The player moves horizontally and fires projectiles to destroy enemies.</td>
+    </tr>
+    <tr>
+      <td style="background-color: black; text-align: center;"><img src="resources/images/bitmap/bullet_fighter.png" width="110"></td>
+      <td><strong>Player Bullet</strong></td>
+      <td>A projectile fired by the player. It travels upward and damages enemies and the boss.</td>
+    </tr>
+    <tr>
+      <td style="background-color: black; text-align: center;"><img src="resources/images/bitmap/enemy.png" width="110"></td>
+      <td><strong>Normal Enemy</strong></td>
+      <td>The standard enemy type. It moves toward the player and can damage the player on collision.</td>
+    </tr>
+    <tr>
+      <td style="background-color: black; text-align: center;"><img src="resources/images/bitmap/enemy_tank.png" width="110"></td>
+      <td><strong>Tank Enemy</strong></td>
+      <td>A durable enemy with higher health and requires more attacks to destroy.</td>
+    </tr>
+    <tr>
+      <td style="background-color: black; text-align: center;"><img src="resources/images/bitmap/enemy_fast.png" width="110"></td>
+      <td><strong>Fast Enemy</strong></td>
+      <td>A fast-moving enemy that increases gameplay difficulty.</td>
+    </tr>
+    <tr>
+      <td style="background-color: black; text-align: center;"><img src="resources/images/bitmap/boss.png" width="110"></td>
+      <td><strong>Boss</strong></td>
+      <td>A powerful enemy that appears at the boss level. The boss has high HP and launches projectiles at the player.</td>
+    </tr>
+    <tr>
+      <td style="background-color: black; text-align: center;"><img src="resources/images/bitmap/bullet_arrow.png" width="110"></td>
+      <td><strong>Boss Bullet</strong></td>
+      <td>A projectile fired by the boss. The player must avoid it to prevent HP loss.</td>
+    </tr>
+  </tbody>
+</table>
 
 
 <div align="center">
