@@ -57,9 +57,9 @@ The game consists of several interactive objects that control the gameplay:
 | Bitmap | Object Name | Description |
 |:---:|:---|:---|
 | <img src="resources/images/bitmap/player.png" width="110"> | **Player** | The main player-controlled spaceship. The player moves horizontally and fires projectiles to destroy enemies. |
-| <img src="resources/images/bitmap/bullet_lightning.png" width="110"> | **Player Bullet** | A lightning projectile fired by the default Player. It travels upward and damages enemies and the boss. |
+| <img src="resources/images/bitmap/bullet_lightning.png" width="110"> | **Tank Bullet** | A projectile fired by the Player. It travels upward and damages enemies and the boss. |
 | <img src="resources/images/bitmap/player_tank.png" width="110"> | **Player Tank** | An alternative player character style that can be selected in the game settings. It has a robust design. |
-| <img src="resources/images/bitmap/bullet_fighter.png" width="110"> | **Tank Bullet** | A projectile specifically fired by the Player Tank. It travels upward and damages enemies and the boss. |
+| <img src="resources/images/bitmap/bullet_fighter.png" width="110"> | **Player Bullet** | A projectile specifically fired by the Player Tank. It travels upward and damages enemies and the boss. |
 | <img src="resources/images/bitmap/player_archer.png" width="110"> | **Player Archer** | Another alternative player character style available for selection, designed for precision. |
 | <img src="resources/images/bitmap/bullet_arrow.png" width="110"> | **Archer Bullet** | An arrow-shaped projectile fired by the Player Archer. It travels upward and damages enemies and the boss. |
 | <img src="resources/images/bitmap/enemy.png" width="110"> | **Normal Enemy** | The standard enemy type. It moves toward the player and can damage the player on collision. |
