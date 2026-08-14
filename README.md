@@ -103,7 +103,7 @@ Once **PLAY** is selected, players transition to the **Gameplay Screen**. This s
 | File | Description |
 |---|---|
 | [README.md](README.md) | Main project overview, hardware information, gameplay rules, and game objects. |
-| [docs/01-guide-getting-started.md](docs/01-guide-getting-started.md) | Getting started guide for building and running the Monster Shooter game. |
+| [docs/01-guide_getting-started.md](docs/01-guide_getting-started.md) | Getting started guide for building and running the Monster Shooter game. |
 | [docs/02-project-overview.md](docs/02-project-overview.md) | Project overview, game structure, gameplay flow, and main game components. |
 | [docs/03-software-architecture.md](docs/03-software-architecture.md) | Software architecture, object relationships, runtime flow, and event-driven design of the game. |
 
