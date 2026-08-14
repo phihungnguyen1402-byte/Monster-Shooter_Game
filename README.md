@@ -98,31 +98,6 @@ By navigating the menu, players can access the **Settings Screen**, which offers
 Once **PLAY** is selected, players transition to the **Gameplay Screen**. This screen displays the active combat area along with a top status bar tracking the current **SCORE**, **LEVEL**, and remaining **HP** (Health Points).
 
 
-<div align="center">
-
-<table>
-<tr>
-
-<td align="center">
-<img src="resources/images/demo.png" width="350"><br>
-<b>Demo Screen</b>
-</td>
-
-<td align="center">
-<img src="resources/images/play.png" width="350"><br>
-<b>Gameplay Screen</b>
-</td>
-
-<td align="center">
-<img src="resources/images/settings.png" width="350"><br>
-<b>Settings Screen</b>
-</td>
-
-</tr>
-</table>
-
-</div>
-
 ## Documentation
 
 | File | Description |
