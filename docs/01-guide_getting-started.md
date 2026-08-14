@@ -33,7 +33,7 @@ You can also click the **Star** button next to **Fork** to support the author.
     width="1338"
     height="640"
     alt="getting-started-repository"
-    src="../../resources/images/getting_started/getting_started_view_ak_foundation.png" />
+    src="../resources/images/getting_started/getting_started_view_ak_foundation.png" />
 </p>
 
 ### 3. Create the fork
@@ -47,7 +47,7 @@ Click **Create fork** to create your own copy of the repository.
     width="1338"
     height="640"
     alt="create-fork"
-    src="../../resources/images/getting_started/getting_started_create_fork.png" />
+    src="../resources/images/getting_started/getting_started_create_fork.png" />
 </p>
 
 > **Note:**
@@ -61,7 +61,7 @@ Once the fork is created, GitHub redirects you to the new repository — this is
 <p align="center">
   <img
     alt="getting-started-repo-after-fork"
-    src="../../resources/images/getting_started/getting_started_repo_after_fork.png" />
+    src="../resources/images/getting_started/getting_started_repo_after_fork.png" />
 </p>
 
 ---
@@ -84,7 +84,7 @@ From your `Home` directory, create a folder named **Workspace** — this will ho
 <p align="center">
   <img
     alt="getting-started-open-vscode-workspace"
-    src="../../resources/images/getting_started/getting_started_open_vscode_workspace.png" />
+    src="../resources/images/getting_started/getting_started_open_vscode_workspace.png" />
 </p>
 
 Inside `Workspace`, create two subdirectories:
@@ -96,7 +96,7 @@ Inside `Workspace`, create two subdirectories:
 <p align="center">
   <img
     alt="Create sources and tools folders"
-    src="../../resources/images/getting_started/getting_started_create_sources_and_tools_folders.png" />
+    src="../resources/images/getting_started/getting_started_create_sources_and_tools_folders.png" />
 </p>
 
 ### Step 2: Clone the repo to your machine
@@ -111,7 +111,7 @@ git clone https://github.com/<your-username>/<your-cloned-repo-name>.git
 <p align="center">
   <img
     alt="Open terminal in sources folder"
-    src="../../resources/images/getting_started/getting_started_open_terminal_in_sources.png" />
+    src="../resources/images/getting_started/getting_started_open_terminal_in_sources.png" />
 </p>
 
 ---
@@ -124,14 +124,14 @@ First, set your game's name in the `Makefile.mk` file located in the `applicatio
 <p align="center">
   <img
     alt="Rename repository for game"
-    src="../../resources/images/getting_started/getting_started_rename_repo_for_game.png" />
+    src="../resources/images/getting_started/getting_started_rename_repo_for_game.png" />
 </p>
 
 All game logic lives in the `application/sources/app` directory.
 <p align="center">
   <img
     alt="Build and run application"
-    src="../../resources/images/getting_started/getting_started_build_and_run_application.png" />
+    src="../resources/images/getting_started/getting_started_build_and_run_application.png" />
 </p>
 
 #### Example: Displaying the Peashooter screen in the Plants vs. Zombies game
@@ -140,48 +140,48 @@ All game logic lives in the `application/sources/app` directory.
 <p align="center">
   <img
     alt="Build and run application"
-    src="../../resources/images/getting_started/getting_started_create_peashooter_header.png" />
+    src="../resources/images/getting_started/getting_started_create_peashooter_header.png" />
 </p>
 **Step 3.2 —** Create `scr_peashooter.cpp` to handle the bitmap data and render the Peashooter on the display:
 <p align="center">
   <img
     alt="Build and run application"
-    src="../../resources/images/getting_started/getting_started_create_peashooter_source.png" />
+    src="../resources/images/getting_started/getting_started_create_peashooter_source.png" />
 </p>
 
 **Step 3.3 —** Create a header file `screens_bitmap.h` in the `screens/` directory to declare shared bitmap data:
 <p align="center">
   <img
     alt="Build and run application"
-    src="../../resources/images/getting_started/getting_started_create_bitmap_header.png" />
+    src="../resources/images/getting_started/getting_started_create_bitmap_header.png" />
 </p>
 
 **Step 3.4 —** Create `screens_bitmap.cpp` containing the Peashooter's bitmap data:
 <p align="center">
   <img
     alt="Build and run application"
-    src="../../resources/images/getting_started/getting_started_create_bitmap_source.png" />
+    src="../resources/images/getting_started/getting_started_create_bitmap_source.png" />
 </p>
 
 **Step 3.5 —** Include the Peashooter header file in `task_display.h`:
 <p align="center">
   <img
     alt="Build and run application"
-    src="../../resources/images/getting_started/getting_started_include_headers_in_task_display.png" />
+    src="../resources/images/getting_started/getting_started_include_headers_in_task_display.png" />
 </p>
 
 **Step 3.6 —** Update the `AC_DISPLAY_BUTTON_MODE_RELEASED` case:
 <p align="center">
   <img
     alt="Update switch case in task display"
-    src="../../resources/images/getting_started/getting_started_update_switch_case_in_task_display.png" />
+    src="../resources/images/getting_started/getting_started_update_switch_case_in_task_display.png" />
 </p>
 
 **Step 3.7 —** Add the two files `scr_peashooter.cpp` and `screens_bitmap.cpp` to `Makefile.mk` inside the `screens/` directory so they get compiled:
 <p align="center">
   <img
     alt="Add bitmap and peashooter to project"
-    src="../../resources/images/getting_started/getting_started_add_bitmap_and_peashooter_to_project.png" />
+    src="../resources/images/getting_started/getting_started_add_bitmap_and_peashooter_to_project.png" />
 </p>
 
 ## Step 3.8 — Build and flash the firmware onto the kit (see detailed instructions in Section II)
@@ -189,7 +189,7 @@ All game logic lives in the `application/sources/app` directory.
 <p align="center">
   <img
     alt="Update switch case in task display"
-    src="../../resources/images/getting_started/getting_started_final_result.png" />
+    src="../resources/images/getting_started/getting_started_final_result.png" />
 </p>
 ---
 
@@ -207,14 +207,14 @@ git push origin main
 <p align="center">
   <img
     alt="Push code to GitHub"
-    src="../../resources/images/getting_started/getting_started_push_code_to_github.png" />
+    src="../resources/images/getting_started/getting_started_push_code_to_github.png" />
 </p>
 
 **Repository updated on GitHub:**
 <p align="center">
   <img
     alt="View repository on GitHub"
-    src="../../resources/images/getting_started/getting_started_view_repo_on_github_part1.png" />
+    src="../resources/images/getting_started/getting_started_view_repo_on_github_part1.png" />
 </p>
 
 From here, anyone can visit your GitHub link to follow your progress and try out the game you've built.
