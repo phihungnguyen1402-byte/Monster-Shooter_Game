@@ -64,9 +64,9 @@ The game consists of several interactive objects that control the gameplay:
 | <img src="resources/images/bitmap/boss.png" width="110"> | **Boss** | A powerful enemy that appears at the boss level. The boss has high HP and launches projectiles at the player. |
 | <img src="resources/images/bitmap/bullet_arrow.png" width="110"> | **Boss Bullet** | A projectile fired by the boss. The player must avoid it to prevent HP loss. |
 
-### Objects in the Game
+<h3>Objects in the Game</h3>
 
-The game consists of several interactive objects that control the gameplay:
+<p>The game consists of several interactive objects that control the gameplay:</p>
 
 <table>
   <tr>
@@ -76,77 +76,59 @@ The game consists of several interactive objects that control the gameplay:
   </tr>
 
   <tr>
-    <td align="center" bgcolor="black">
+    <td align="center" bgcolor="#000000">
       <img src="resources/images/bitmap/player.png" width="110">
     </td>
     <td align="center"><b>Player</b></td>
-    <td>
-      The main player-controlled spaceship. The player moves horizontally
-      and fires projectiles to destroy enemies.
-    </td>
+    <td>The main player-controlled spaceship. The player moves horizontally and fires projectiles to destroy enemies.</td>
   </tr>
 
   <tr>
-    <td align="center" bgcolor="black">
+    <td align="center" bgcolor="#000000">
       <img src="resources/images/bitmap/bullet_fighter.png" width="110">
     </td>
     <td align="center"><b>Player Bullet</b></td>
-    <td>
-      A projectile fired by the player. It travels upward and damages
-      enemies and the boss.
-    </td>
+    <td>A projectile fired by the player. It travels upward and damages enemies and the boss.</td>
   </tr>
 
   <tr>
-    <td align="center" bgcolor="black">
+    <td align="center" bgcolor="#000000">
       <img src="resources/images/bitmap/enemy.png" width="110">
     </td>
     <td align="center"><b>Normal Enemy</b></td>
-    <td>
-      The standard enemy type. It moves toward the player and can damage
-      the player on collision.
-    </td>
+    <td>The standard enemy type. It moves toward the player and can damage the player on collision.</td>
   </tr>
 
   <tr>
-    <td align="center" bgcolor="black">
+    <td align="center" bgcolor="#000000">
       <img src="resources/images/bitmap/enemy_tank.png" width="110">
     </td>
     <td align="center"><b>Tank Enemy</b></td>
-    <td>
-      A durable enemy with higher health and requires more attacks to destroy.
-    </td>
+    <td>A durable enemy with higher health and requires more attacks to destroy.</td>
   </tr>
 
   <tr>
-    <td align="center" bgcolor="black">
+    <td align="center" bgcolor="#000000">
       <img src="resources/images/bitmap/enemy_fast.png" width="110">
     </td>
     <td align="center"><b>Fast Enemy</b></td>
-    <td>
-      A fast-moving enemy that increases gameplay difficulty.
-    </td>
+    <td>A fast-moving enemy that increases gameplay difficulty.</td>
   </tr>
 
   <tr>
-    <td align="center" bgcolor="black">
+    <td align="center" bgcolor="#000000">
       <img src="resources/images/bitmap/boss.png" width="110">
     </td>
     <td align="center"><b>Boss</b></td>
-    <td>
-      A powerful enemy that appears at the boss level. The boss has high HP
-      and launches projectiles at the player.
-    </td>
+    <td>A powerful enemy that appears at the boss level. The boss has high HP and launches projectiles at the player.</td>
   </tr>
 
   <tr>
-    <td align="center" bgcolor="black">
+    <td align="center" bgcolor="#000000">
       <img src="resources/images/bitmap/bullet_arrow.png" width="110">
     </td>
     <td align="center"><b>Boss Bullet</b></td>
-    <td>
-      A projectile fired by the boss. The player must avoid it to prevent HP loss.
-    </td>
+    <td>A projectile fired by the boss. The player must avoid it to prevent HP loss.</td>
   </tr>
 </table>
 
