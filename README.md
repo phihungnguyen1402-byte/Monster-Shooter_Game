@@ -56,13 +56,45 @@ The game consists of several interactive objects that control the gameplay:
 
 | Bitmap | Object Name | Description |
 |:---:|:---|:---|
-| <img src="resources/images/bitmap/player.png" width="110"> | **Player** | The main player-controlled spaceship. The player moves horizontally and fires projectiles to destroy enemies. |
+| <img src="resources/images/bitmap/player.png" width="110"> | **Player (Fighter)** | The main player-controlled spaceship. The player moves horizontally and fires projectiles to destroy enemies. |
+| <img src="resources/images/bitmap/player_tank.png" width="110"> | **Player Tank** | An alternative player character style that can be selected in the game settings. It may offer different gameplay mechanics or durability. |
+| <img src="resources/images/bitmap/player_archer.png" width="110"> | **Player Archer** | Another alternative player character style available for selection, potentially offering unique attack patterns. |
 | <img src="resources/images/bitmap/bullet_fighter.png" width="110"> | **Player Bullet** | A projectile fired by the player. It travels upward and damages enemies and the boss. |
 | <img src="resources/images/bitmap/enemy.png" width="110"> | **Normal Enemy** | The standard enemy type. It moves toward the player and can damage the player on collision. |
 | <img src="resources/images/bitmap/enemy_tank.png" width="110"> | **Tank Enemy** | A durable enemy with higher health and requires more attacks to destroy. |
 | <img src="resources/images/bitmap/enemy_fast.png" width="110"> | **Fast Enemy** | A fast-moving enemy that increases gameplay difficulty. |
 | <img src="resources/images/bitmap/boss.png" width="110"> | **Boss** | A powerful enemy that appears at the boss level. The boss has high HP and launches projectiles at the player. |
 | <img src="resources/images/bitmap/bullet_arrow.png" width="110"> | **Boss Bullet** | A projectile fired by the boss. The player must avoid it to prevent HP loss. |
+
+<table align="center">
+  <tr>
+    <td align="center"><img src="resources/images/demo.png" width="350" /></td>
+  </tr>
+</table>
+<p align="center"><strong><em>Figure 1:</em></strong> Demo Screen </p>
+
+<table align="center">
+  <tr>
+    <td align="center"><img src="resources/images/settings.png" width="350" /></td>
+  </tr>
+</table>
+<p align="center"><strong><em>Figure 2:</em></strong> Settings Screen </p>
+
+By navigating the menu, players can access the **Settings Screen**, which offers the following options to configure the game: 
+- **PLAY**: Start a new match and enter the main game.
+- **SOUND**: Toggle the in-game audio ON or OFF.
+- **MODE**: Select the difficulty level from 3 available modes (e.g., Normal, Hard).
+- **STYLE**: Choose the player's character or spaceship design (e.g., Fighter).
+
+
+<table align="center">
+  <tr>
+    <td align="center"><img src="resources/images/play.png" width="350" /></td>
+  </tr>
+</table>
+<p align="center"><strong><em>Figure 3:</em></strong> Gameplay Screen </p>
+
+Once **PLAY** is selected, players transition to the **Gameplay Screen**. This screen displays the active combat area along with a top status bar tracking the current **SCORE**, **LEVEL**, and remaining **HP** (Health Points).
 
 
 <div align="center">
