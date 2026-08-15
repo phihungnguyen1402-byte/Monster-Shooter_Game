@@ -13,7 +13,11 @@
 
 <h3 align="center">Normal Gameplay</h3>
 
+<div align="center">
+
 https://github.com/user-attachments/assets/533b893c-3640-409c-a472-ff8249c435cf
+
+</div>
 
 ## Documentation
 
