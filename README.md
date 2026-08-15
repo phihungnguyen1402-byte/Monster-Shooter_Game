@@ -13,16 +13,7 @@
 
 <h3 align="center">Normal Gameplay</h3>
 
-<div align="center">
-
-<video
-src="
-https://github.com/user-attachments/assets/533b893c-3640-409c-a472-ff8249c435cf"
-controls
-width="640">
-</video>
-
-</div>
+https://github.com/user-attachments/assets/533b893c-3640-409c-a472-ff8249c435cf
 
 ## Documentation
 
